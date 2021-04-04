@@ -1,0 +1,38 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem 'pg'
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode  
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+
+development:
+  <<: *default
+  database: classificados_development
+  username: postgres
+  password: 1234
+  
+test:
+  <<: *default
+  database: classificados_test
+  username: postgres
+  password: 1234
+
+#   production:
+#     url: <%= ENV['MY_APP_DATABASE_URL'] %>
+# Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
+#
+production:
+  <<: *default
+  database: classificados_production
+  username: postgres
+  password: 1234
+  # username: classificados
+  #password: <%= ENV['CLASSIFICADOS_DATABASE_PASSWORD'] %>
